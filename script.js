@@ -115,3 +115,37 @@ function createParticles() {
 document.addEventListener('click', function() {
   document.getElementById('bgMusic').play();
 });
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  const bgMusic = document.getElementById('bgMusic');
+  const musicControl = document.querySelector('.music-control');
+  
+  // ১. পেজ লোড হলে গান চালু করার চেষ্টা
+  bgMusic.volume = 0.3; // ভলিউম কম রাখুন (অপশনাল)
+  const playPromise = bgMusic.play();
+
+  // ২. যদি ব্রাউজার অটোপ্লে ব্লক করে
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      musicControl.style.display = 'block'; // 🎵 বাটন দেখান
+    });
+  }
+
+  // ৩. মিউজিক কন্ট্রোল বাটন
+  musicControl.addEventListener('click', function() {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicControl.textContent = '🔊';
+    } else {
+      bgMusic.pause();
+      musicControl.textContent = '🎵';
+    }
+  });
+});
+
+// ৪. পেজ ভিজিবল হলে গান চালু (যদি ট্যাব ব্যাকগ্রাউন্ডে থাকে)
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
+    document.getElementById('bgMusic').play();
+  }
+});
