@@ -199,6 +199,11 @@ h1 {
     .wish p {
         font-size: 1.1rem;
     }
+    /* style.css-এ যোগ করুন */
+.gallery-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px pink;
+}
     
     .signature {
         font-size: 1.5rem !important;
