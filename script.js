@@ -112,3 +112,6 @@ function createParticles() {
     `;
     document.head.appendChild(style);
 }
+document.addEventListener('click', function() {
+  document.getElementById('bgMusic').play();
+});
